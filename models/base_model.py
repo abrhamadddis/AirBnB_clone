@@ -52,9 +52,8 @@ class BaseModel:
         '''
         returns dictionary value of all key/values
         '''
-        idme = self.id
-        created = self.created_at.isoformat()
-        updated = self.updated_at.isoformat()
-        classname = self.__class__.__name__
-        di = {'id': idme, 'created_at': created, 'updated_at': updated, '__class__': classname}
-        return di
+        new_dict = self.__dict__.copy()
+        new_dict['created_at'] = self.created_at.isoformat()
+        new_dict['updated_at'] = self.updated_at.isoformat()
+        new_dict['__class__'] = self.__class__.__name__
+        return new_dict
