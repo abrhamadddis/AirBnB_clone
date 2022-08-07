@@ -2,7 +2,7 @@
 """
 Console entry point
 """
-import re
+
 from shlex import split
 from ast import parse
 from models.base_model import BaseModel
