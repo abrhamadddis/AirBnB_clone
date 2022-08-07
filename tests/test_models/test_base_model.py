@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""Test module for base_model.py
+"""Defines unittests for models/base_model.py.
+
+Unittest classes:
+    TestBaseModel_instantiation
+    TestBaseModel_save
+    TestBaseModel_to_dict
 """
 import os
 import models
@@ -9,8 +14,8 @@ from time import sleep
 from models.base_model import BaseModel
 
 
-class Test_Task3(unittest.TestCase):
-    """Tests for the documentation of BaseModel and Task 3"""
+class TestBaseModel_instantiation(unittest.TestCase):
+    """Unittests for testing instantiation of the BaseModel class."""
 
     def test_no_args_instantiates(self):
         self.assertEqual(BaseModel, type(BaseModel()))
@@ -183,5 +188,5 @@ class TestBaseModel_to_dict(unittest.TestCase):
             bm.to_dict(None)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
