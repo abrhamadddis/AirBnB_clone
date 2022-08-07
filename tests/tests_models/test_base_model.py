@@ -2,6 +2,7 @@
 """Test module for base_model.py
 """
 from unittest import TestCase
+import unittest
 import models.base_model
 import re
 from datetime import datetime
