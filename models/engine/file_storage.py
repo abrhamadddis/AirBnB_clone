@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' a module that serializes instances to a JSON file and deserializes JSON file to instances'''
+''' a module that serializes instances to a JSON'''
 
 import json
 from models.base_model import BaseModel
@@ -18,7 +18,7 @@ class FileStorage:
     def all(self):
         ''' returns a dictionary object'''
         return FileStorage.__object
-    
+
     def new(self, obj):
         '''sets in __objects the obj with key <obj class name>.id'''
         setattr(FileStorage.__object, obj.id, obj)
@@ -29,7 +29,8 @@ class FileStorage:
         for obj in mydict:
             mydict1 = {obj: mydict[obj].to_dict()}
         with open(FileStorage.__file_path, 'w') as f:
-            json.dump(mydict1, f, indent= 4)
+            json.dump(mydict1, f, indent=4)
+
     def reload(self):
         try:
             myFile = FileStorage.__file_path
@@ -39,5 +40,5 @@ class FileStorage:
                 classname = key["__class__"]
                 del key["__class__"]
                 self.new(eval(classname)(**key))
-        except:
-            pass
+        except FileNotFoundError:
+            return

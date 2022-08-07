@@ -38,7 +38,7 @@ class BaseModel:
         '''
         a string representation of Rectatngle
         '''
-        a, b, c =self.__class__.__name__, self.id, self.__dict__
+        a, b, c = self.__class__.__name__, self.id, self.__dict__
         return("[{:s}] ({:s}) {}".format(a, b, c))
 
     def save(self):
@@ -52,7 +52,9 @@ class BaseModel:
         '''
         returns dictionary value of all key/values
         '''
-        dictun = {'id': self.id, 'created_at': self.created_at.isoformat(), 'updated_at': self.updated_at.isoformat(),'__class__': self.__class__.__name__}
-        return dictun
-
-BaseModel()
+        idme = self.id
+        created = self.created_at.isoformat()
+        updated = self.updated_at.isoformat()
+        classname = self.__class__.__name__
+        di = {'id': idme, 'created_at': created, 'updated_at': updated, '__class__': classname}
+        return di
