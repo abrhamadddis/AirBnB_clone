@@ -3,9 +3,9 @@
 A module BaseModel that defines all common attributes/methods for other modules
 '''
 
-from datetime import date, datetime
+import models
 from uuid import uuid4
-from models import storage
+from datetime import datetime
 
 
 class BaseModel:
@@ -32,7 +32,7 @@ class BaseModel:
                     else:
                         self.__dict__[k] = v
         else:
-            storage.new()
+            models.storage.new()
 
     def __str__(self):
         '''
@@ -46,7 +46,7 @@ class BaseModel:
         updates a updated day of an object
         '''
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         '''
