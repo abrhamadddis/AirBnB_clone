@@ -8,8 +8,9 @@ from ast import parse
 from models.base_model import BaseModel
 import cmd
 import sys
+from models.user import User
 from models import storage
-
+import re
 
 def parsee(arg):
     """Parses aruments passed"""
